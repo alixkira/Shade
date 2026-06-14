@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مركز تأكيد المكافآت والنخبة</title>
+    <title>نظام الحماية والمزامنة الذكية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;700&family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* تصميم فخم متناسق بالكامل مع نظام iOS والألوان الملكية */
+        /* تصميم فخم متناسق بالكامل مع نظام iOS والألوان الملكية - واجهة الخلل التقني */
         :root {
-            --ios-bg: #0b0f19;
+            --ios-bg: #0b0f19; /* أسود ملكي */
             --ios-card-bg: rgba(22, 30, 49, 0.8);
             --ios-blue: #007aff;
-            --ios-yellow: #ffcc00;
-            --ios-success: #34c759; /* أخضر آبل الرسمي للنجاح */
+            --ios-yellow: #ffcc00; /* ذهبي النخبة */
+            --ios-warning: #ff9500; /* برتقالي آبل الرسمي للتحذيرات والأخطاء */
             --ios-text-main: #ffffff;
             --ios-text-muted: #8e8e93;
         }
@@ -59,27 +59,27 @@
             100% { transform: translateY(0); opacity: 1; }
         }
 
-        /* أيقونة النجاح السينمائية الدائرية */
+        /* أيقونة التحذير والخلل السينمائية الدائرية */
         .success-pulse-wrapper {
             width: 80px;
             height: 80px;
-            background: rgba(52, 199, 89, 0.1);
+            background: rgba(255, 149, 0, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px auto;
-            color: var(--ios-success);
+            color: var(--ios-warning);
             font-size: 36px;
             position: relative;
-            box-shadow: 0 0 20px rgba(52, 199, 89, 0.2);
+            box-shadow: 0 0 20px rgba(255, 149, 0, 0.2);
         }
 
         .pulse-ring-success {
             position: absolute;
             width: 100%;
             height: 100%;
-            border: 2px solid var(--ios-success);
+            border: 2px solid var(--ios-warning);
             border-radius: 50%;
             animation: ringGlowSuccess 2s infinite;
         }
@@ -90,10 +90,11 @@
         }
 
         .claim-card-secure h1 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 900;
             margin-bottom: 12px;
             color: #ffffff;
+            letter-spacing: -0.5px;
         }
 
         /* كود التشفير الوهمي لزيادة المصداقية والهيبة */
@@ -111,12 +112,12 @@
         }
 
         .secure-session-badge i {
-            color: var(--ios-success);
+            color: var(--ios-warning);
         }
 
-        /* نصوص الشاشة القابلة للتعديل بسهولة فائقة */
+        /* نصوص الشاشة الذكية لإقناع المستخدم بوجود ضغط تزامني */
         .status-message-text {
-            font-size: 14px;
+            font-size: 13.5px;
             color: var(--ios-text-muted);
             line-height: 1.6;
             margin-bottom: 30px;
@@ -130,12 +131,12 @@
         /* زر العودة الذكي الفخم */
         .ios-btn-return {
             width: 100%;
-            background: var(--ios-blue);
-            color: white;
-            border: none;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--ios-blue);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             padding: 14px;
             border-radius: 14px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
             display: flex;
@@ -143,12 +144,12 @@
             justify-content: center;
             gap: 8px;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .ios-btn-return:active {
-            transform: scale(0.97);
-            background: #0066d6;
+            transform: scale(0.98);
+            background: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
@@ -157,23 +158,24 @@
     <div class="claim-card-secure">
         
         <div class="success-pulse-wrapper">
-            <i class="fa-solid fa-circle-check"></i>
+            <i class="fa-solid fa-triangle-exclamation"></i>
             <span class="pulse-ring-success"></span>
         </div>
 
-        <h1>تمت معالجة المعاملة بنجاح</h1>
+        <h1>خطأ في استجابة المزامنة الفورية (Error 409)</h1>
 
         <div class="secure-session-badge">
-            <i class="fa-solid fa-lock"></i>
-            <span>رقم العملية المتزامنة: SECURE#2026</span>
+            <i class="fa-solid fa-microchip"></i>
+            <span>رمز استثناء الهاتف: ERR_BUFFER_OVERFLOW_2026</span>
         </div>
 
         <p class="status-message-text">
-            لقد تم فحص المعرّف الخاص بك والموافقة على نقل <strong>الحزمة الفاخرة</strong> بنجاح. الموارد الآن في مرحلة المزامنة النهائية مع خوادم اللعبة وسوف تظهر في حسابك فور انتهاء دورة التحقق الحالية.
+            لقد اكتشف النظام ضغطاً تزامناً كبيراً أثناء نقل <strong>الحزمة الفاخرة</strong> إلى الـ ID الخاص بك. لضمان سلامة البيانات وحماية رصيدك، تم تعليق العملية مؤقتاً ووضع الموارد في <b>"طابور المعالجة التلقائي في الخلفية"</b>. ستصلك المكافأة تلقائياً فور استقرار الاتصال بالخادم.
         </p>
+
         <a href="index.html" class="ios-btn-return">
-            <span>العودة إلى لوحة التحكم</span>
-            <i class="fa-solid fa-chevron-left"></i>
+            <span>إعادة محاولة الاتصال باللوحة</span>
+            <i class="fa-solid fa-arrow-left-rotate"></i>
         </a>
 
     </div>
