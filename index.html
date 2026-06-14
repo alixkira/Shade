@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gems Simulator Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;700&family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="termsModal" class="ios-modal-overlay active">
+        <div class="ios-modal-card splash-card">
+            <div class="splash-icon">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            </div>
+            <h2>مرحباً بك في النظام</h2>
+            
+            <p class="entry-agreement-text" style="font-size: 13px; color: var(--ios-text-muted); line-height: 1.6; margin-bottom: 20px;">
+                بالضغط على دخول، أنت توافق على 
+                <span id="openTermsLink" style="color: var(--ios-blue); cursor: pointer; font-weight: bold; text-decoration: underline;">شروط الاستخدام</span> الخاصة بالمحاكي.
+            </p>
+
+            <button id="acceptTermsBtn" class="ios-btn-primary">
+                <span>دخول وتوصيل الحساب</span>
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="termsDetailsModal" class="ios-modal-overlay">
+        <div class="ios-modal-card">
+            <div class="card-close-bar" onclick="closeTermsDetails()"></div>
+            <h3>إشعار شروط الاستخدام</h3>
+            <p class="terms-text" style="text-align: center; font-size: 14px; color: var(--ios-text-muted); line-height: 1.6; margin: 15px 0;">
+                هذه اللعبة هي مجرد <strong>محاكي تفاعلي للألعاب</strong> للترفيه والمحاكاة السيكولوجية لربح الجواهر والكوينز، ولا تمثل أي أساس من الإضافة الحقيقية للجواهر أو الكوينز داخل الألعاب الرسمية.
+            </p>
+            <button onclick="closeTermsDetails()" class="ios-btn-confirm">فهمت ذلك</button>
+        </div>
+    </div>
+
+    <header class="ios-header">
+        <div class="header-container">
+            <div class="token-badge-container">
+                <div class="token-icon-wrapper">
+                    <i class="fa-solid fa-coins token-glow-icon"></i>
+                </div>
+                <div class="token-details">
+                    <span class="token-label">رصيد التوكن</span>
+                    <span id="tokenCount" class="token-amount">0</span>
+                </div>
+            </div>
+            <button id="settingsBtn" class="ios-action-btn" aria-label="الإعدادات">
+                <i class="fa-solid fa-gear"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="ios-main-content">
+
+        <section id="mainDashboard" class="dashboard-section active">
+            <div class="welcome-banner">
+                <h1>مرحباً بك في المحاكي النخبة</h1>
+                <p>اختر وجهتك المفضلة وابقَ في الصدارة</p>
+            </div>
+            
+            <div class="menu-grid">
+                <div class="menu-card game-card" onclick="switchSection('gamesMenu')">
+                    <div class="card-icon"><i class="fa-solid fa-gamepad"></i></div>
+                    <div class="card-info">
+                        <h3>إلعب واجمع التوكن</h3>
+                        <p>استمتع بالألعاب المصغرة وحرك عجلة الحظ</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-left arrow-nav"></i>
+                </div>
+
+                <div class="menu-card efootball-card" onclick="openShop('efootball')">
+                    <div class="card-icon"><i class="fa-solid fa-circle-dollar-to-slot"></i></div>
+                    <div class="card-info">
+                        <h3>شراء كوينز بيس</h3>
+                        <p>استبدل التوكن الخاص بك بحزم كوينز eFootball</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-left arrow-nav"></i>
+                </div>
+
+                <div class="menu-card freefire-card" onclick="openShop('freefire')">
+                    <div class="card-icon"><i class="fa-solid fa-gem"></i></div>
+                    <div class="card-info">
+                        <h3>شراء جواهر فري فاير</h3>
+                        <p>شحن فوري لباقات جواهر Free Fire الفاخرة</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-left arrow-nav"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="gamesMenu" class="dashboard-section">
+            <div class="section-header">
+                <button class="back-btn" onclick="switchSection('mainDashboard')">
+                    <i class="fa-solid fa-chevron-right"></i> الرئيسية
+                </button>
+                <h2>الألعاب المتوفرة</h2>
+            </div>
+
+            <div class="games-list">
+                <div class="game-item-card" onclick="startGame('aimHunter')">
+                    <div class="game-badge blue">صيد سريع</div>
+                    <h3>صائد أهداف متاهة الذاكرة</h3>
+                    <p>سرعة بديهة مطلقة لاقتناص الدوائر العشوائية</p>
+                </div>
+                
+                <div class="game-item-card" onclick="startGame('memoryMaze')">
+                    <div class="game-badge purple">تحدي الذكاء</div>
+                    <h3>متاهة الذاكرة الثنائية</h3>
+                    <p>اقلب الكروت الفاخرة وابحث عن الأزواج المتطابقة</p>
+                </div>
+
+                <div class="game-item-card" onclick="startGame('fortuneWheel')">
+                    <div class="game-badge gold">عجلة الحظ</div>
+                    <h3>عجلة الحظ السحرية</h3>
+                    <p>استثمر 10 توكن لتدوير العجلة وضاعف أرباحك</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="aimHunterGame" class="dashboard-section game-canvas-section">
+            <div class="section-header">
+                <button class="back-btn" onclick="switchSection('gamesMenu')">
+                    <i class="fa-solid fa-chevron-right"></i> خروج
+                </button>
+                <div class="game-timer">الوقت: <span id="aimTimer">20</span>ث</div>
+            </div>
+            <div id="aimZone" class="game-play-area target-zone">
+                </div>
+        </section>
+
+        <section id="memoryMazeGame" class="dashboard-section game-canvas-section">
+            <div class="section-header">
+                <button class="back-btn" onclick="switchSection('gamesMenu')">
+                    <i class="fa-solid fa-chevron-right"></i> خروج
+                </button>
+                <div class="game-score">الأزواج: <span id="memoryPairs">0/6</span></div>
+            </div>
+            <div id="memoryGrid" class="game-play-area memory-grid-layout">
+                </div>
+        </section>
+
+        <section id="fortuneWheelGame" class="dashboard-section game-canvas-section">
+            <div class="section-header">
+                <button class="back-btn" onclick="switchSection('gamesMenu')">
+                    <i class="fa-solid fa-chevron-right"></i> خروج
+                </button>
+            </div>
+            <div class="wheel-game-container">
+                <div class="wheel-wrapper">
+                    <div class="wheel-pointer"><i class="fa-solid fa-caret-down"></i></div>
+                    <canvas id="wheelCanvas" width="320" height="320"></canvas>
+                </div>
+                <button id="spinBtn" class="spin-trigger-btn">
+                    <span>تدوير (10 توكن)</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="shopSection" class="dashboard-section">
+            <div class="section-header">
+                <button class="back-btn" onclick="switchSection('mainDashboard')">
+                    <i class="fa-solid fa-chevron-right"></i> الرئيسية
+                </button>
+                <h2 id="shopTitle">متجر الشحن</h2>
+            </div>
+            <div id="shopItemsContainer" class="shop-offers-list">
+                </div>
+        </section>
+
+    </main>
+
+    <div id="idModal" class="ios-modal-overlay">
+        <div class="ios-modal-card id-verification-card">
+            <div class="card-close-bar" onclick="closeIdModal()"></div>
+            <h3>التحقق من حساب اللاعب</h3>
+            <p>أدخل الـ ID الخاص بك لربطه بالنظام ومعالجة الطلب فوراً</p>
+            <div class="ios-input-group">
+                <input type="text" id="playerIDInput" placeholder="مثال: 489201948" autocomplete="off">
+                <i class="fa-solid fa-fingerprint"></i>
+            </div>
+            <div class="modal-actions-buttons">
+                <button onclick="submitOrder()" class="ios-btn-confirm">تأكيد وإرسال</button>
+                <button onclick="closeIdModal()" class="ios-btn-cancel">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingModal" class="ios-modal-overlay">
+        <div class="ios-modal-card processing-card">
+            <div class="ios-spinner"></div>
+            <h3>جاري معالجة الطلب...</h3>
+            <p>يتم الآن فحص وتأمين المعرف الخاص بك عبر سيرفرات النخبة</p>
+        </div>
+    </div>
+
+    <div id="settingsModal" class="ios-modal-overlay">
+        <div class="ios-modal-card settings-premium-card">
+            <div class="card-close-bar" onclick="closeSettingsModal()"></div>
+            <h3>لوحة التحكم والإعدادات</h3>
+            
+            <div class="settings-form-wrapper">
+                <div class="settings-field">
+                    <label>الموارد والمخزون</label>
+                    <input type="text" id="resourceInput" placeholder="أدخل رمز الموارد الفاخرة...">
+                </div>
+
+                <div class="settings-field">
+                    <label>خادم النظام والمزامنة (الكود السري)</label>
+                    <div class="server-input-wrapper" style="display: flex; gap: 8px; width: 100%;">
+                        <input type="text" id="serverInput" placeholder="مثال: 999" style="flex: 1;">
+                        <button onclick="activateServerCheat()" style="background: var(--ios-blue); color: white; border: none; padding: 0 15px; border-radius: 12px; font-weight: bold; font-size: 13px; cursor: pointer; min-width: 65px;">تفعيل</button>
+                    </div>
+                </div>
+
+                <button id="deleteAccountBtn" class="ios-btn-danger" style="margin-top: 15px;">
+                    <i class="fa-solid fa-trash-can"></i> حذف الحساب بالكامل
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmDeleteModal" class="ios-modal-overlay">
+        <div class="ios-modal-card danger-alert-card">
+            <i class="fa-solid fa-triangle-exclamation alert-icon"></i>
+            <h3>سيتم حذف جميع تقدمك!</h3>
+            <p>هل أنت متأكد تماماً من تصفير الحساب وإعادة ضبط المصنع؟ لا يمكن التراجع عن هذا الإجراء.</p>
+            <div class="modal-actions-buttons">
+                <button id="finalDeleteBtn" class="ios-btn-confirm-danger">نعم، متأكد</button>
+                <button onclick="closeConfirmDeleteModal()" class="ios-btn-cancel">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

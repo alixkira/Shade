@@ -1,0 +1,595 @@
+/* ==========================================================================
+   1. الهوية البصرية والألوان الملكية (Premium Design System)
+   ========================================================================== */
+:root {
+    --ios-bg: #0b0f19; /* أسود ملكي مائل للزرقة الرقمية */
+    --ios-card-bg: rgba(22, 30, 49, 0.75); /* شفافية زجاجية فاخرة */
+    --ios-blue: #007aff; /* أزرق آبل الرسمي للنظام */
+    --ios-blue-glow: rgba(0, 122, 255, 0.4);
+    --ios-yellow: #ffcc00; /* ذهبي النخبة */
+    --ios-purple: #af52de;
+    --ios-green: #34c759;
+    --ios-red: #ff3b30;
+    --ios-text-main: #ffffff;
+    --ios-text-muted: #8e8e93;
+    --blur-premium: blur(20px);
+}
+
+/* إعادة ضبط المصنع ومحاذاة النصوص */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SF Pro Display', 'Tajawal', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--ios-bg);
+    color: var(--ios-text-main);
+    min-height: 100vh;
+    direction: rtl;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. الهيدر العلوي الذكي (Sticky iOS Header)
+   ========================================================================== */
+.ios-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(11, 15, 25, 0.8);
+    backdrop-filter: var(--blur-premium);
+    -webkit-backdrop-filter: var(--blur-premium);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 500px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+/* حاوية الرصيد التفاعلية الفخمة */
+.token-badge-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 6px 16px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.token-icon-wrapper {
+    color: var(--ios-yellow);
+    font-size: 20px;
+    animation: goldGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes goldGlow {
+    0%, 100+ % { transform: scale(1); filter: drop-shadow(0 0 2px rgba(255,204,0,0.4)); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(255,204,0,0.8)); }
+}
+
+.token-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.token-label {
+    font-size: 10px;
+    color: var(--ios-text-muted);
+}
+
+.token-amount {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.ios-action-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.ios-action-btn:active { background: rgba(255, 255, 255, 0.15); }
+
+/* ==========================================================================
+   3. الحاوية العامة ونظام الـ SPA Router (الشاشات التبديلية)
+   ========================================================================== */
+.ios-main-content {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 90px 20px 40px 20px;
+    min-height: 100vh;
+}
+
+.dashboard-section {
+    display: none;
+    animation: iosFadeIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.dashboard-section.active {
+    display: block;
+}
+
+@keyframes iosFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* البانر الترحيبي العريض */
+.welcome-banner {
+    margin-bottom: 25px;
+    padding: 10px 5px;
+}
+
+.welcome-banner h1 {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+}
+
+.welcome-banner p {
+    font-size: 14px;
+    color: var(--ios-text-muted);
+}
+
+/* ==========================================================================
+   4. بطاقات القائمة الرئيسية والمتاجر (Premium Cards & Grid)
+   ========================================================================== */
+.menu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.menu-card {
+    background: var(--ios-card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.menu-card:active {
+    transform: scale(0.98);
+    background: rgba(255,255,255,0.02);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+/* توزيع الألوان الفخمة للمتاجر */
+.game-card .card-icon { background: rgba(0, 122, 255, 0.1); color: var(--ios-blue); }
+.efootball-card .card-icon { background: rgba(255, 204, 0, 0.1); color: var(--ios-yellow); }
+.freefire-card .card-icon { background: rgba(175, 82, 222, 0.1); color: var(--ios-purple); }
+
+.card-info { flex: 1; }
+.card-info h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.card-info p { font-size: 12px; color: var(--ios-text-muted); line-height: 1.4; }
+.arrow-nav { color: rgba(255,255,255,0.15); font-size: 14px; }
+
+/* عناصر قائمة المتاجر والأزرار الهيدر الداخلية */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--ios-blue);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ==========================================================================
+   5. تصميم الألعاب المصغرة الفاخرة (Mini Games Engine UI)
+   ========================================================================== */
+.games-list { display: flex; flex-direction: column; gap: 14px; }
+
+.game-item-card {
+    background: var(--ios-card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 18px;
+    padding: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.game-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+.game-badge.blue { background: rgba(0,122,255,0.15); color: var(--ios-blue); }
+.game-badge.purple { background: rgba(175,82,222,0.15); color: var(--ios-purple); }
+.game-badge.gold { background: rgba(255,204,0,0.15); color: var(--ios-yellow); }
+
+.game-item-card h3 { font-size: 16px; margin-bottom: 6px; padding-left: 60px; }
+.game-item-card p { font-size: 12px; color: var(--ios-text-muted); }
+
+/* مساحة اللعب العامة للألعاب */
+.game-play-area {
+    width: 100%;
+    height: 360px;
+    background: rgba(255,255,255,0.01);
+    border: 1px dashed rgba(255,255,255,0.06);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* لعبة صائد الأهداف (Aim Targets) */
+.aim-target {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 900;
+    cursor: pointer;
+    user-select: none;
+    animation: targetPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes targetPop { from { transform: scale(0); } to { transform: scale(1); } }
+.aim-target.positive { background: var(--ios-blue); box-shadow: 0 0 15px var(--ios-blue-glow); color: #fff; }
+.aim-target.negative { background: var(--ios-red); box-shadow: 0 0 15px rgba(255,59,48,0.4); color: #fff; }
+
+/* لعبة كروت الذاكرة المتطابقة (Memory Grid Layout) */
+.memory-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 15fr);
+    gap: 12px;
+    padding: 15px;
+    align-content: center;
+}
+
+.memory-card-wrapper {
+    aspect-ratio: 1;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.memory-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 14px;
+}
+
+.memory-card-wrapper.flipped .memory-card-inner { transform: rotateY(180deg); }
+
+.card-back, .card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 14px;
+}
+
+.card-back { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: var(--ios-text-muted); }
+.card-front { background: var(--ios-blue); color: #ffffff; transform: rotateY(180deg); }
+
+/* ==========================================================================
+   6. نظام حماية وعزل حركة وعرض عجلة الحظ
+   ========================================================================== */
+.wheel-game-container {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.wheel-wrapper {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin: 0 auto 30px auto;
+    overflow: hidden; /* يمنع خروج المحاذاة الدائرية للخارج نهائياً */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    color: #ffffff;
+    font-size: 32px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+}
+
+#wheelCanvas {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(0, 122, 255, 0.25);
+    border: 4px solid rgba(255, 255, 255, 0.08);
+}
+
+.spin-trigger-btn {
+    width: 100%;
+    max-width: 260px;
+    background: linear-gradient(180deg, var(--ios-blue), #0066d6);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 122, 255, 0.3);
+    transition: transform 0.2s;
+}
+
+.spin-trigger-btn:active { transform: scale(0.97); }
+.spin-trigger-btn:disabled { background: #2c2c2e; color: #48484a; box-shadow: none; cursor: not-allowed; }
+
+/* ==========================================================================
+   7. واجهات ومستطيلات الشراء داخل المتجر (Premium Store Rows)
+   ========================================================================== */
+.shop-offers-list { display: flex; flex-direction: column; gap: 12px; }
+
+.premium-shop-row {
+    background: var(--ios-card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.shop-item-meta { display: flex; align-items: center; gap: 12px; }
+.shop-item-icon { font-size: 20px; }
+.efootball-theme .shop-item-icon { color: var(--ios-yellow); }
+.freefire-theme .shop-item-icon { color: var(--ios-blue); }
+
+.shop-item-details h4 { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+.shop-item-details span { font-size: 11px; color: var(--ios-text-muted); }
+
+.shop-cost-badge {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ios-yellow);
+}
+
+.ios-btn-buy {
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--ios-blue);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+}
+.ios-btn-buy:active { background: rgba(255, 255, 255, 0.15); }
+
+/* ==========================================================================
+   8. النوافذ المنبثقة الذكية وتوافق الكيبورد (iOS Modals)
+   ========================================================================== */
+.ios-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: var(--blur-premium);
+    -webkit-backdrop-filter: var(--blur-premium);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.ios-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ios-modal-card {
+    background: rgba(30, 30, 45, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    max-width: 380px;
+    border-radius: 24px;
+    padding: 30px 24px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* يضمن عدم اختفاء الحقول أو انضغاطها عند صعود لوحة المفاتيح */
+    max-height: 85vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ios-modal-overlay.active .ios-modal-card {
+    transform: scale(1);
+}
+
+/* الشاشات الفرعية والسحب للإغلاق البصري */
+.card-close-bar {
+    width: 40px;
+    height: 5px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    margin: -15px auto 20px auto;
+    cursor: pointer;
+}
+
+.ios-modal-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.ios-modal-card p { font-size: 13px; color: var(--ios-text-muted); line-height: 1.5; margin-bottom: 20px; }
+
+/* حقول الإدخال الفخمة مع الأيقونات */
+.ios-input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.ios-input-group input, .settings-field input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 14px 44px 14px 14px;
+    border-radius: 12px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.ios-input-group input:focus, .settings-field input:focus {
+    border-color: var(--ios-blue);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.ios-input-group i {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    color: var(--ios-text-muted);
+    font-size: 16px;
+}
+
+/* تصنيفات وتوزيع أزرار النوافذ */
+.modal-actions-buttons { display: flex; flex-direction: column; gap: 10px; }
+
+.ios-btn-primary {
+    width: 100%;
+    background: var(--ios-blue);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.ios-btn-confirm { width: 100%; background: rgba(255,255,255,0.06); color: var(--ios-blue); border: none; padding: 12px; border-radius: 12px; font-weight: 700; cursor: pointer; }
+.ios-btn-cancel { width: 100%; background: none; color: var(--ios-text-muted); border: none; padding: 10px; font-weight: 600; cursor: pointer; }
+
+/* سبينر التحميل الفخم (Loading Spinner) */
+.ios-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255,255,255,0.05);
+    border-top-color: var(--ios-blue);
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ==========================================================================
+   9. حقول التحكم المتقدمة وتخصيص كبار الشخصيات (VIP Settings UI)
+   ========================================================================== */
+.settings-form-wrapper { display: flex; flex-direction: column; gap: 14px; text-align: right; }
+.settings-field { display: flex; flex-direction: column; gap: 6px; }
+.settings-field label { font-size: 12px; color: var(--ios-text-muted); padding-right: 4px; }
+.settings-field input { padding: 12px; }
+
+.ios-btn-danger { background: rgba(255,59,48,0.1); color: var(--ios-red); border: none; padding: 12px; border-radius: 12px; font-weight: 700; cursor: pointer; width: 100%; }
+.ios-btn-confirm-danger { background: var(--ios-red); color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 700; cursor: pointer; width: 100%; }
+.alert-icon { font-size: 40px; color: var(--ios-yellow); margin-bottom: 15px; }
+
+.splash-icon { font-size: 44px; color: var(--ios-blue); margin-bottom: 15px; }
+.splash-card h2 { font-size: 20px; font-weight: 900; margin-bottom: 10px; }
+
+/* ==========================================================================
+   10. تحسينات المزامنة وتسريع استجابة الواجهة (Hardware Acceleration)
+   ========================================================================== */
+#wheelCanvas {
+    will-change: transform; /* إجبار الهواتف المتصفحة على استخدام كرت الشاشة الخارجي */
+    transform: rotate(0deg);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* تنظيف وضغط أداء المؤثرات لضمان بقاء الفخامة وخفة التصفح */
+.aim-target, .memory-card-inner {
+    will-change: transform, opacity;
+}
+
+/* تنعيم شريط التمرير داخل بطاقات الإعدادات على الهواتف الذكية */
+.ios-modal-card::-webkit-scrollbar {
+    width: 4px;
+}
+.ios-modal-card::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
